@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  	<title>Matrix Visualizer</title>
+  </head>
+
+  <body onload="load_first_file()">
+  	<script type="text/javascript">
+      
+      console.log("JJJJJ");
+      var matrix = []
+      var temp_matrix = [];
+      var temp2_matrix = [];
+
+  	  function load_first_file() {
+  	  	$.ajax('RAP_8.ij.00000', {
+  	  		datatype: 'text',
+  	  		success: process_first_file
+  	  	});
+  	  }
+
+  	  function process_first_file(data) {
+        console.log("HHHHH");
+  	  	console.log(data);
+        temp_matrix = data.split("\n");
+        //console.log(temp_matrix.length);
+        for(var i = 1; i < temp_matrix.length - 1; i++) {
+          temp2_matrix[0] = temp_matrix[i].split(" ");
+          console.log(temp2_matrix[0]);
+          //temp2_matrix[0].splice(0, 1);
+          //console.log(temp2_matrix[i]);
+          matrix[(temp2_matrix[0][0])][(temp2_matrix[0][1])] = 1;
+        }
+        console.log("Hello World!")
+  	  }
+
+  	  function load_second_file() {
+  	  	$.ajax('RAP_8.ij.00001', {
+  	  		datatype: 'text',
+  	  		success: process_second_file
+  	  	});
+  	  }
+
+  	  function process_second_file(data) {
+  	  	console.log(data);
+        temp_matrix = data.split("\n");
+        for(var i = 1; i < temp_matrix.length - 1; i++) {
+          temp2_matrix[0] = temp_matrix[i].split(" ");
+          console.log(temp2_matrix[0]);
+          matrix[(temp2_matrix[0][0])][(temp2_matrix[0][1])] = 1;          
+        }
+  	  	load_first_file();
+  	  }
+
+  	  function load_third_file() {
+  	  	$.ajax('RAP_8.ij.00002', {
+  	  		datatype: 'text',
+  	  		success: process_third_file
+  	  	});
+  	  }
+
+  	  function process_third_file(data) {
+  	  	console.log(data);
+        temp_matrix = data.split("\n")
+        for(var i = 1; i < temp_matrix.length - 1; i++) {
+          temp2_matrix[0] = temp_matrix[i].split(" ");
+          matrix[(temp2_matrix[0][0])][(temp2_matrix[0][1])] = 1;
+        }
+  	  	load_second_file();
+  	  }
+
+  	  function load_fourth_file() {
+  	  	$.ajax('RAP_8.ij.00003', {
+  	  		datatype: 'text',
+  	  		success: process_fourth_file
+  	  	});
+  	  }
+
+  	  function process_fourth_file(data) {
+  	  	console.log(data);
+        temp_matrix = data.split("\n");
+        temp2_matrix = temp_matrix[0].split(" ");
+        matrix = new Array()
+        for(var i = 1; i < temp_matrix.length - 1; i++) {
+          temp2_matrix[0] = temp_matrix[i].split(" ");
+          matrix[(temp2_matrix[0][0])][(temp2_matrix[0][1])] = 1;
+        }
+        console.log(temp_matrix);
+  	  	//console.log("Hello World!");
+        //console.log(matrix);
+        load_third_file();
+  	  }
+
+  	</script>
+  </body>
+</html>
