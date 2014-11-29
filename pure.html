@@ -185,7 +185,7 @@
           else {
             x = 0;
           }
-          temp_matrix[j] = [i, j, x]
+          temp_matrix[j] = x;
         }
         matrix[i] = temp_matrix;
       }
@@ -193,7 +193,8 @@
       console.log(matrix);
 
       for(var i = 0; i < 15; i++) {
-        if(matrix[i][2] == 1) {
+        for(var j = 0; j < 15; j++) {
+        if(matrix[i][j] == 1) {
           temp1 = "" + i + matrix[i][0];
           temp2 = "" + i + matrix[i][1];
           sys.addEdge(temp1, temp2);
@@ -202,6 +203,7 @@
           temp1 = "" + i + matrix[i][0];
           sys.addNode(temp1);
         }
+      }
       }
     
   })
